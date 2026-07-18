@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" width="100%" height="100%">
+  <!-- Handle -->
+  <path d="M 46 25 Q 46 10, 60 10 Q 74 10, 74 25" fill="none" stroke="#45633C" stroke-width="4.5" stroke-linecap="round" />
+  
+  <!-- Briefcase Main Body (Standing Book) -->
+  <rect x="30" y="25" width="60" height="50" rx="8" ry="8" fill="#45633C" />
+  
+  <!-- Front Flap / Pocket -->
+  <rect x="34" y="29" width="52" height="38" rx="5" ry="5" fill="#5D7E53" />
+  
+  <!-- Flap Edge Shadow -->
+  <line x1="34" y1="67" x2="86" y2="67" stroke="#375030" stroke-width="1.5" />
+  
+  <!-- Handle Connection Rings (Subtle detail) -->
+  <rect x="44" y="23" width="4" height="4" rx="1" fill="#375030" />
+  <rect x="72" y="23" width="4" height="4" rx="1" fill="#375030" />
+  
+  <!-- Base Book (Lying Flat) -->
+  <!-- Pages (Cream) -->
+  <path d="M 22 75 L 102 75 C 104 75, 105 76, 105 78 L 105 81 C 105 83, 104 84, 102 84 L 22 84 Z" fill="#F4F1EA" />
+  
+  <!-- Bottom Cover (Green) -->
+  <path d="M 18 84 L 102 84 C 105 84, 106 85, 106 87 L 106 87 C 106 89, 105 90, 102 90 L 18 90 C 16 90, 15 89, 15 87 L 15 87 C 15 85, 16 84, 18 84 Z" fill="#45633C" />
+  
+  <!-- Left Spine Curve (Green) -->
+  <path d="M 15 75 Q 12 75, 12 82.5 Q 12 90, 15 90 C 17 90, 18 89, 18 87 L 18 78 C 18 76, 17 75, 15 75 Z" fill="#375030" />
+  
+  <!-- Bookmark Ribbon (Gold/Tan) -->
+  <!-- It comes out from the pages at the bottom left, curves left and hangs down -->
+  <path d="M 22 81 C 12 81, 10 83, 10 86 C 10 89, 14 88, 18 87" fill="none" stroke="#D1A153" stroke-width="3" stroke-linecap="square" />
+  <path d="M 18 87 L 22 87" stroke="#D1A153" stroke-width="3" stroke-linecap="square" />
+</svg>

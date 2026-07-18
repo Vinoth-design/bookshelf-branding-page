@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookShelf - Carry an Entire Library</title>
+  <meta name="description" content="BookShelf is a premium digital reading platform that helps readers discover, organize and continue reading across devices with a beautiful, distraction-free experience.">
+  
+  <!-- Open Graph / Social Meta Tags -->
+  <meta property="og:title" content="BookShelf - Carry an Entire Library">
+  <meta property="og:description" content="Discover, organize, and continue reading across all your devices with a beautiful, distraction-free digital experience.">
+  <meta property="og:type" content="website">
+  
+  <!-- Styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <!-- First Fold (Header + Hero) -->
+  <div class="hero-fold" id="hero-fold-container">
+    <!-- Header / Navigation Bar -->
+    <header class="site-header container" id="site-header-navigation">
+      <a href="#" class="logo-group" id="brand-logo-link" aria-label="BookShelf Home">
+        <img src="Logo/Primary logo.png" alt="BookShelf Logo" class="brand-logo-img">
+      </a>
+      <p class="site-description" id="platform-intro-text">
+        A digital reading platform that helps readers discover, organize and continue reading across devices with a beautiful, distraction-free experience.
+      </p>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero-section container" id="hero-main-content">
+      <article class="hero-content">
+        <h1 class="hero-title">Carry an entire library.</h1>
+        <p class="hero-subtitle">Never lose your place in the stories that shape you.</p>
+      </article>
+    </main>
+  </div>
+
+  <!-- Brand Story Section -->
+  <section class="brand-story-section" id="brand-story">
+    <div class="container">
+      <div class="brand-story-header">
+        <span class="brand-story-label">Brand story</span>
+        <h2 class="brand-story-title">A world filled with stories.</h2>
+        <p class="brand-story-subtitle">Yet millions struggle to find the next one worth reading.</p>
+      </div>
+      <div class="brand-story-grid">
+        <div class="brand-story-image-box">
+          <img src="Images/Brand story.png" alt="BookShelf Brand Story" class="brand-story-img">
+        </div>
+        <div class="brand-story-text-box">
+          <p class="brand-story-paragraph">
+            Books have always been gateways to imagination, learning, and personal growth. But the modern reading experience has become fragmented. Physical books live on shelves. Digital books live inside different apps. Reading lists disappear across devices. Recommendations feel impersonal.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile Showcase Section -->
+  <section class="mobile-showcase-section" id="mobile-showcase">
+    <div class="container mobile-showcase-grid">
+      <div class="mobile-showcase-left">
+        <div class="showcase-logo-group">
+          <img src="Logo/Primary logo.png" alt="BookShelf Logo" class="showcase-logo-img">
+        </div>
+        <p class="showcase-paragraph">
+          Instead of designing another reading application, we envisioned a platform that celebrates curiosity. A place where every interaction encourages discovery, every interface respects attention, and every design decision makes reading feel effortless.
+        </p>
+      </div>
+      <div class="mobile-showcase-right">
+        <div class="showcase-image-wrapper">
+          <img src="Images/mobile.png" alt="BookShelf App Mockup" class="showcase-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reading Moments Section -->
+  <section class="moments-section" id="reading-moments">
+    <div class="container moments-container">
+      <div class="moments-header">
+        <h2 class="moments-title animate-fade-in">
+          <span class="text-brand">Designed Around</span><br>Every Reading Moment.
+        </h2>
+        <p class="moments-subtitle animate-fade-in">
+          A journey made of discoveries, quiet moments, curiosity, and reflection. Bookshelf supports every step.
+        </p>
+      </div>
+      
+      <div class="moments-grid">
+        <!-- Card 1: Discover -->
+        <div class="moment-card animate-card" style="--card-index: 1;">
+          <div class="moment-icon-box">
+            <svg class="moment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
+          </div>
+          <h3 class="moment-card-title">Discover</h3>
+          <p class="moment-card-text">
+            Find books that match your interests instead of endless lists.
+          </p>
+        </div>
+
+        <!-- Card 2: Read -->
+        <div class="moment-card animate-card" style="--card-index: 2;">
+          <div class="moment-icon-box">
+            <svg class="moment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <h3 class="moment-card-title">Read</h3>
+          <p class="moment-card-text">
+            Immerse yourself in a distraction-free environment designed for focus and comfort.
+          </p>
+        </div>
+
+        <!-- Card 3: Remember -->
+        <div class="moment-card animate-card" style="--card-index: 3;">
+          <div class="moment-icon-box">
+            <svg class="moment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <h3 class="moment-card-title">Remember</h3>
+          <p class="moment-card-text">
+            Save highlights, favorite quotes, and meaningful moments you'll return to again and again.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script -->
+  <script src="main.js"></script>
+</body>
+</html>
