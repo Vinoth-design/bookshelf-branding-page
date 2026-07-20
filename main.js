@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const animatedSections = [
     document.getElementById('mobile-showcase'),
     document.getElementById('reading-moments'),
-    document.getElementById('brand-identity')
+    document.getElementById('brand-identity'),
+    document.getElementById('color-palette')
   ];
 
   animatedSections.forEach(section => {

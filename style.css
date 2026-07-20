@@ -16,7 +16,8 @@
   --container-max-width: 1280px;
   --spacing-horizontal: clamp(2rem, 6.5vw, 7.5rem);
   
-  /* Transitions */
+  /* Transitions & Border Radius */
+  --radius-card: 20px;
   --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -519,44 +520,47 @@ body {
 }
 
 .brand-identity-label {
-  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  font-size: clamp(0.85rem, 1.1vw, 1.05rem);
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--color-text-primary);
+  letter-spacing: -0.01em;
   display: block;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 }
 
 .brand-identity-title {
-  font-size: clamp(2.2rem, 4.2vw, 3.5rem);
-  font-weight: 800;
-  line-height: 1.15;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.25;
   color: var(--color-text-primary);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .brand-identity-subtitle {
-  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
   line-height: 1.6;
   color: var(--color-text-secondary);
+  max-width: 620px;
   font-weight: 400;
   margin: 0;
   letter-spacing: -0.01em;
 }
 
-/* Brand Asset Tab Component */
+/* Brand Asset Tab Component (80% width) */
 .brand-asset-component {
-  width: 100%;
+  width: 80%;
+  max-width: 80%;
   display: flex;
   flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .logo-preview-card {
   background-color: #FFFFFF;
-  border-radius: 24px;
+  border-radius: var(--radius-card);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(59, 88, 51, 0.06);
   padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 4vw, 4rem);
@@ -597,29 +601,29 @@ body {
 }
 
 .preview-logo-img {
-  max-width: 85%;
+  max-width: 55%;
   height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
 
 .preview-full-logo {
-  max-height: clamp(100px, 16vw, 160px);
+  max-height: clamp(55px, 8vw, 95px);
 }
 
 .preview-wordmark {
-  max-height: clamp(90px, 14vw, 140px);
+  max-height: clamp(50px, 7vw, 85px);
 }
 
 .preview-logomark {
-  max-height: clamp(110px, 18vw, 170px);
+  max-height: clamp(60px, 9vw, 100px);
 }
 
 /* Tab Navigation Bar */
 .brand-tabs-nav {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  gap: clamp(1rem, 2vw, 1.8rem);
   width: 100%;
 }
 
@@ -648,7 +652,7 @@ body {
   width: 100%;
   height: 1px;
   background-color: #E2E8F0;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.5rem;
   transition: background-color 0.35s ease, height 0.35s ease;
 }
 
@@ -658,7 +662,7 @@ body {
 }
 
 .tab-title {
-  font-size: clamp(1.1rem, 1.35vw, 1.25rem);
+  font-size: clamp(1.05rem, 1.25vw, 1.18rem);
   font-weight: 600;
   color: #8A9188;
   letter-spacing: -0.01em;
@@ -684,13 +688,13 @@ body {
 
 .brand-tab-btn.active .tab-description-wrapper {
   grid-template-rows: 1fr;
-  margin-top: 0.6rem;
+  margin-top: 0.35rem;
 }
 
 .tab-description {
   overflow: hidden;
-  font-size: clamp(0.85rem, 1vw, 0.92rem);
-  line-height: 1.55;
+  font-size: 0.75rem;
+  line-height: 1.45;
   color: var(--color-text-secondary);
   margin: 0;
   letter-spacing: -0.01em;
@@ -848,5 +852,173 @@ body {
   
   .hero-subtitle {
     max-width: 100%;
+  }
+}
+
+/* Section 6: Color Palette Section (Desktop 50/50 Full-Bleed & Mobile Stack matching Figma) */
+.color-palette-section {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.container.color-palette-container {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  display: flex;
+  align-items: center;
+}
+
+.color-palette-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.color-palette-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  max-width: 560px;
+  width: 100%;
+  height: 100%;
+  padding: clamp(2rem, 5vw, 6rem);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.color-palette-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.color-palette-subtitle {
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.01em;
+}
+
+.color-palette-description {
+  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.color-palette-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.color-palette-media-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+  border: none;
+  background-color: #39511C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color-palette-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+/* Section 6 Animations */
+.color-palette-section .animate-fade-in {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.color-palette-section.visible .animate-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1279px) {
+  .color-palette-section {
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .container.color-palette-container {
+    height: auto;
+  }
+
+  .color-palette-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 0;
+  }
+
+  .color-palette-content {
+    padding: 3.5rem 2rem 2.5rem 2rem;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .color-palette-visual {
+    height: 50vh;
+    min-height: 340px;
+    width: 100%;
+  }
+
+  .color-palette-media-wrapper {
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .color-palette-gif {
+    border-radius: 0;
+    object-fit: cover;
   }
 }
