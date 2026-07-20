@@ -487,6 +487,246 @@ body {
   transform: translateY(0);
 }
 
+/* Brand Identity Section */
+.brand-identity-section {
+  height: 100vh;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: clamp(2rem, 5vh, 4rem);
+  padding-bottom: clamp(2rem, 5vh, 4rem);
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+}
+
+.brand-identity-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.brand-identity-header {
+  margin-bottom: clamp(2.5rem, 5vh, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 800px;
+}
+
+.brand-identity-label {
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.brand-identity-title {
+  font-size: clamp(2.2rem, 4.2vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  letter-spacing: -0.03em;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.brand-identity-subtitle {
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Brand Asset Tab Component */
+.brand-asset-component {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-preview-card {
+  background-color: #FFFFFF;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(59, 88, 51, 0.06);
+  padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 4vw, 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(280px, 35vh, 360px);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  box-sizing: border-box;
+}
+
+.logo-preview-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.96);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.4s ease;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.logo-preview-panel.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  position: relative;
+}
+
+.preview-logo-img {
+  max-width: 85%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.preview-full-logo {
+  max-height: clamp(100px, 16vw, 160px);
+}
+
+.preview-wordmark {
+  max-height: clamp(90px, 14vw, 140px);
+}
+
+.preview-logomark {
+  max-height: clamp(110px, 18vw, 170px);
+}
+
+/* Tab Navigation Bar */
+.brand-tabs-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  width: 100%;
+}
+
+.brand-tab-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  outline: none;
+  font-family: inherit;
+  transition: opacity 0.3s ease;
+}
+
+.brand-tab-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.tab-indicator-line {
+  width: 100%;
+  height: 1px;
+  background-color: #E2E8F0;
+  margin-bottom: 1.2rem;
+  transition: background-color 0.35s ease, height 0.35s ease;
+}
+
+.brand-tab-btn.active .tab-indicator-line {
+  background-color: var(--color-primary);
+  height: 3px;
+}
+
+.tab-title {
+  font-size: clamp(1.1rem, 1.35vw, 1.25rem);
+  font-weight: 600;
+  color: #8A9188;
+  letter-spacing: -0.01em;
+  transition: color 0.35s ease, font-weight 0.35s ease;
+}
+
+.brand-tab-btn.active .tab-title {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.brand-tab-btn:hover:not(.active) .tab-title {
+  color: var(--color-text-primary);
+}
+
+.tab-description-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.4s ease;
+  width: 100%;
+  margin-top: 0;
+}
+
+.brand-tab-btn.active .tab-description-wrapper {
+  grid-template-rows: 1fr;
+  margin-top: 0.6rem;
+}
+
+.tab-description {
+  overflow: hidden;
+  font-size: clamp(0.85rem, 1vw, 0.92rem);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  margin: 0;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transition: opacity 0.35s ease 0.05s;
+}
+
+.brand-tab-btn.active .tab-description {
+  opacity: 1;
+}
+
+/* Animations registration for Brand Identity */
+.brand-identity-section .animate-fade-in {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-identity-section .animate-card {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-identity-section.visible .animate-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brand-identity-section.visible .animate-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Responsive adjustments */
 @media (max-width: 960px) {
   .site-header {
@@ -579,6 +819,25 @@ body {
 
   .moment-card {
     padding: 2rem;
+  }
+
+  /* Brand Identity Section Mobile Overrides */
+  .brand-identity-section {
+    height: auto;
+    min-height: auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .brand-tabs-nav {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .logo-preview-card {
+    min-height: 220px;
+    padding: 2.5rem 1.5rem;
+    margin-bottom: 2rem;
   }
 }
 

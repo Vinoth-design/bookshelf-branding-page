@@ -27,12 +27,56 @@ document.addEventListener('DOMContentLoaded', () => {
   // Target animatable sections for scroll reveal
   const animatedSections = [
     document.getElementById('mobile-showcase'),
-    document.getElementById('reading-moments')
+    document.getElementById('reading-moments'),
+    document.getElementById('brand-identity')
   ];
 
   animatedSections.forEach(section => {
     if (section) {
       scrollObserver.observe(section);
     }
+  });
+
+  // Brand Asset Tab Component Interaction
+  const tabButtons = document.querySelectorAll('.brand-tab-btn');
+  const previewPanels = document.querySelectorAll('.logo-preview-panel');
+
+  function switchBrandTab(selectedTabBtn) {
+    if (!selectedTabBtn || selectedTabBtn.classList.contains('active')) return;
+
+    const targetTabId = selectedTabBtn.getAttribute('data-tab');
+
+    // Update tab buttons state
+    tabButtons.forEach(btn => {
+      const isActive = (btn === selectedTabBtn);
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    // Update preview panels state
+    previewPanels.forEach(panel => {
+      const isTargetPanel = (panel.id === `panel-${targetTabId}`);
+      panel.classList.toggle('active', isTargetPanel);
+    });
+  }
+
+  tabButtons.forEach((btn, index) => {
+    btn.addEventListener('click', () => switchBrandTab(btn));
+
+    // Keyboard navigation (Arrow keys)
+    btn.addEventListener('keydown', (e) => {
+      let targetIndex = null;
+      if (e.key === 'ArrowRight') {
+        targetIndex = (index + 1) % tabButtons.length;
+      } else if (e.key === 'ArrowLeft') {
+        targetIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+      }
+
+      if (targetIndex !== null) {
+        e.preventDefault();
+        tabButtons[targetIndex].focus();
+        switchBrandTab(tabButtons[targetIndex]);
+      }
+    });
   });
 });
