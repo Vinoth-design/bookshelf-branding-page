@@ -1022,3 +1022,300 @@ body {
     object-fit: cover;
   }
 }
+
+/* ==========================================
+   Section 7: Designed for Every Reading Moment
+   ========================================== */
+.every-moment-section {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: clamp(2rem, 4vh, 3.5rem);
+  padding-bottom: clamp(2rem, 4vh, 3.5rem);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.every-moment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.every-moment-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.every-moment-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+}
+
+.every-moment-subtitle {
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Stage Area: Left Badges | Phone Carousel | Right Badges */
+.every-moment-stage {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1100px;
+  margin: 1.2rem auto 0.8rem auto;
+  position: relative;
+}
+
+/* Floating Feature Badges */
+.floating-badges {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.2rem, 5.5vh, 3.8rem);
+  z-index: 25;
+}
+
+.badge-col-left {
+  align-items: flex-end;
+  padding-right: 0;
+  margin-right: -2rem;
+  z-index: 25;
+}
+
+.badge-col-right {
+  align-items: flex-start;
+  padding-left: 0;
+  margin-left: -2rem;
+  z-index: 25;
+}
+
+.feature-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #FFFFFF;
+  padding: 0.65rem 1.25rem;
+  border-radius: 50px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07), 0 2px 6px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: clamp(0.82rem, 0.95vw, 0.92rem);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  position: relative;
+  z-index: 25;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-badge:active,
+.feature-badge.dragging {
+  cursor: grabbing;
+  z-index: 50;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+}
+
+.badge-icon {
+  font-size: 1.05rem;
+  display: inline-block;
+}
+
+.badge-text {
+  letter-spacing: -0.01em;
+}
+
+/* Staggered Vertical Float Animations */
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes floatDown {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(8px); }
+}
+
+.badge-float-1 { animation: floatUp 5s ease-in-out infinite; }
+.badge-float-2 { animation: floatDown 6s ease-in-out infinite 0.5s; }
+.badge-float-3 { animation: floatUp 5.5s ease-in-out infinite 1s; }
+.badge-float-4 { animation: floatDown 5.2s ease-in-out infinite 0.3s; }
+.badge-float-5 { animation: floatUp 6.2s ease-in-out infinite 0.8s; }
+.badge-float-6 { animation: floatDown 5.8s ease-in-out infinite 1.2s; }
+
+/* Phone Carousel Container */
+.phone-carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 2.5vw, 2.2rem);
+  position: relative;
+  z-index: 10;
+}
+
+/* Navigation Arrow Buttons */
+.carousel-arrow {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: var(--transition-smooth);
+}
+
+.carousel-arrow:hover {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+  transform: scale(1.08);
+  box-shadow: 0 10px 28px rgba(59, 88, 51, 0.25);
+}
+
+/* Phone Mockup Frame (#39511C Bezel, 3px Border, 24px Radius, Aspect 1/2.15, Zero Padding) */
+.mockup-phone-frame {
+  height: clamp(450px, 50vh, 550px);
+  aspect-ratio: 1 / 2.15;
+  background-color: #39511C;
+  border-radius: 24px;
+  padding: 0;
+  border: 3px solid #39511C;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(57, 81, 28, 0.25);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.phone-screen-viewport {
+  width: 100%;
+  height: 100%;
+  border-radius: 21px;
+  overflow: hidden;
+  position: relative;
+  background-color: #FFFFFF;
+}
+
+.phone-screen-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #FFFFFF;
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.phone-screen-img.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* Screen Indicators (Dots) */
+.screen-indicators {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.screen-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.15);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: var(--transition-smooth);
+}
+
+.screen-dot:hover {
+  background-color: rgba(59, 88, 51, 0.4);
+}
+
+.screen-dot.active {
+  width: 28px;
+  border-radius: 10px;
+  background-color: var(--color-primary);
+}
+
+/* Section 7 Scroll Reveal Animations */
+.every-moment-section .animate-fade-in {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.every-moment-section.visible .animate-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section 7 Responsive Breakpoints */
+@media (max-width: 960px) {
+  .every-moment-section {
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
+    overflow: visible;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .every-moment-stage {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .floating-badges {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .badge-col-left, .badge-col-right {
+    align-items: center;
+    padding: 0;
+  }
+
+  .mockup-phone-frame {
+    width: 260px;
+    height: 520px;
+  }
+}
