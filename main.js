@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Target animatable sections for scroll reveal
   const animatedSections = [
+    document.getElementById('brand-video'),
     document.getElementById('mobile-showcase'),
     document.getElementById('reading-moments'),
     document.getElementById('brand-identity'),
@@ -60,6 +61,33 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollObserver.observe(section);
     }
   });
+
+  // Dedicated Video Play/Pause Control on Section Entry & Exit
+  const brandVideoSection = document.getElementById('brand-video');
+  const brandVideo = brandVideoSection ? brandVideoSection.querySelector('video') : null;
+
+  if (brandVideoSection && brandVideo) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          brandVideo.currentTime = 0; // Restart video from beginning on section entry
+          const playPromise = brandVideo.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(err => {
+              console.log('Video play caught exception:', err);
+            });
+          }
+        } else {
+          brandVideo.pause();
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.25
+    });
+
+    videoObserver.observe(brandVideoSection);
+  }
 
   // Brand Asset Tab Component Interaction
   const tabButtons = document.querySelectorAll('.brand-tab-btn');
@@ -220,4 +248,173 @@ document.addEventListener('DOMContentLoaded', () => {
     badge.addEventListener('mousedown', onDragStart);
     badge.addEventListener('touchstart', onDragStart, { passive: true });
   });
+
+  // ==========================================================================
+  // Distraction-Free Reader Modal & Interactivity Logic
+  // ==========================================================================
+  const readerModal = document.getElementById('reader-modal');
+  const launchReaderBtn = document.getElementById('btn-launch-reader');
+  const closeReaderBtn = document.getElementById('btn-close-reader');
+  const modalContainer = readerModal ? readerModal.querySelector('.reader-modal-container') : null;
+
+  function openReaderModal() {
+    if (!readerModal) return;
+    readerModal.classList.add('active');
+    readerModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Prevent page scroll when modal is open
+
+    if (typeof gsap !== 'undefined' && modalContainer) {
+      gsap.fromTo(modalContainer, 
+        { scale: 0.9, y: 30, opacity: 0 },
+        { scale: 1, y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }
+      );
+    }
+  }
+
+  function closeReaderModal() {
+    if (!readerModal) return;
+
+    if (typeof gsap !== 'undefined' && modalContainer) {
+      gsap.to(modalContainer, {
+        scale: 0.95,
+        y: 20,
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.in",
+        onComplete: () => {
+          readerModal.classList.remove('active');
+          readerModal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      });
+    } else {
+      readerModal.classList.remove('active');
+      readerModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (launchReaderBtn) {
+    launchReaderBtn.addEventListener('click', openReaderModal);
+  }
+
+  if (closeReaderBtn) {
+    closeReaderBtn.addEventListener('click', closeReaderModal);
+  }
+
+  // Close modal when clicking dark backdrop overlay
+  if (readerModal) {
+    readerModal.addEventListener('click', (e) => {
+      if (e.target === readerModal) {
+        closeReaderModal();
+      }
+    });
+
+    // Close modal on Escape key press
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && readerModal.classList.contains('active')) {
+        closeReaderModal();
+      }
+    });
+  }
+
+  // Reader Modal Theme Switcher
+  const themeBtns = document.querySelectorAll('.theme-btn');
+  themeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selectedTheme = btn.getAttribute('data-theme');
+
+      themeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (modalContainer) {
+        modalContainer.setAttribute('data-theme', selectedTheme);
+      }
+    });
+  });
+
+  // Font Size Controls (80% to 140%)
+  const fontDecreaseBtn = document.getElementById('font-decrease');
+  const fontIncreaseBtn = document.getElementById('font-increase');
+  const fontSizeIndicator = document.getElementById('font-size-indicator');
+  const readerPaper = document.getElementById('reader-paper');
+  let currentFontScale = 100;
+
+  function updateFontSize(newScale) {
+    currentFontScale = Math.max(80, Math.min(140, newScale));
+    if (fontSizeIndicator) fontSizeIndicator.textContent = `${currentFontScale}%`;
+    if (readerPaper) {
+      readerPaper.style.fontSize = `${(currentFontScale / 100) * 1.15}rem`;
+    }
+  }
+
+  if (fontDecreaseBtn && fontIncreaseBtn) {
+    fontDecreaseBtn.addEventListener('click', () => updateFontSize(currentFontScale - 10));
+    fontIncreaseBtn.addEventListener('click', () => updateFontSize(currentFontScale + 10));
+  }
+
+  // Reading Progress Bar Calculation
+  const contentViewport = document.getElementById('reader-content-viewport');
+  const progressBar = document.getElementById('reader-progress-bar');
+
+  if (contentViewport && progressBar) {
+    contentViewport.addEventListener('scroll', () => {
+      const scrollTop = contentViewport.scrollTop;
+      const scrollHeight = contentViewport.scrollHeight - contentViewport.clientHeight;
+      const progressPercent = Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100));
+      progressBar.style.width = `${progressPercent}%`;
+    });
+  }
+
+  // Text Selection Highlight Toast Notification
+  const highlightToast = document.getElementById('highlight-toast');
+  let toastTimeout = null;
+
+  if (contentViewport && highlightToast) {
+    contentViewport.addEventListener('mouseup', () => {
+      const selectedText = window.getSelection().toString().trim();
+      if (selectedText.length > 5) {
+        highlightToast.classList.add('show');
+
+        if (toastTimeout) clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          highlightToast.classList.remove('show');
+        }, 3200);
+      }
+    });
+  }
+
+  // ==========================================================================
+  // GSAP Magnetic Buttons & Newsletter Validation
+  // ==========================================================================
+  const magneticBtns = document.querySelectorAll('.magnetic-btn');
+
+  magneticBtns.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      if (typeof gsap !== 'undefined') {
+        gsap.to(btn, {
+          x: x * 0.25,
+          y: y * 0.25,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      }
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      if (typeof gsap !== 'undefined') {
+        gsap.to(btn, {
+          x: 0,
+          y: 0,
+          duration: 0.5,
+          ease: "elastic.out(1, 0.4)"
+        });
+      }
+    });
+  });
 });
+

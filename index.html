@@ -38,6 +38,18 @@
     </main>
   </div>
 
+  <!-- Dedicated Brand Video Section -->
+  <section class="hero-video-section" id="brand-video">
+    <div class="container hero-video-container animate-fade-in">
+      <div class="hero-video-wrapper">
+        <video class="hero-video" loop muted playsinline preload="auto">
+          <source src="Images/BookShelf - logo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
+
   <!-- Brand Story Section -->
   <section class="brand-story-section" id="brand-story">
     <div class="container">
@@ -323,8 +335,175 @@
     </div>
   </section>
 
-  <!-- Lenis Smooth Scroll Framework -->
+  <!-- Distraction-Free Reader Modal Widget -->
+  <div class="reader-modal-overlay" id="reader-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-book-title">
+    <div class="reader-modal-container">
+      
+      <!-- Top Reading Toolbar -->
+      <header class="reader-toolbar">
+        <div class="reader-book-info">
+          <span class="reader-brand-tag">BookShelf Preview</span>
+          <h4 class="reader-book-title" id="modal-book-title">The Art of Distraction-Free Reading</h4>
+        </div>
+
+        <!-- Theme & Font Size Controls -->
+        <div class="reader-controls">
+          <!-- Theme Switcher -->
+          <div class="theme-selector-group" role="radiogroup" aria-label="Reading Theme">
+            <button class="theme-btn theme-cream active" data-theme="cream" title="Light Cream Theme" aria-label="Light Cream Theme"></button>
+            <button class="theme-btn theme-sepia" data-theme="sepia" title="Warm Sepia Theme" aria-label="Warm Sepia Theme"></button>
+            <button class="theme-btn theme-dark" data-theme="dark" title="Midnight Dark Theme" aria-label="Midnight Dark Theme"></button>
+          </div>
+
+          <!-- Font Size Adjustment -->
+          <div class="font-size-group">
+            <button class="font-btn" id="font-decrease" title="Decrease Font Size" aria-label="Decrease Font Size">A-</button>
+            <span class="font-size-label" id="font-size-indicator">100%</span>
+            <button class="font-btn" id="font-increase" title="Increase Font Size" aria-label="Increase Font Size">A+</button>
+          </div>
+
+          <!-- Close Modal Button -->
+          <button class="close-reader-btn" id="btn-close-reader" aria-label="Close Reader Preview">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Scroll Progress Bar -->
+      <div class="reader-progress-track">
+        <div class="reader-progress-bar" id="reader-progress-bar"></div>
+      </div>
+
+      <!-- Reader Scrollable Content viewport -->
+      <div class="reader-content-viewport" id="reader-content-viewport">
+        <article class="reader-paper" id="reader-paper">
+          <header class="chapter-header">
+            <span class="chapter-number">CHAPTER ONE</span>
+            <h1 class="chapter-title">The Sanctuary of Focus</h1>
+            <p class="chapter-meta">By BookShelf Editorial Team • 4 min read</p>
+          </header>
+
+          <div class="chapter-body">
+            <p class="paragraph-dropcap">
+              In an age of relentless notifications and fractured attention spans, reading has transformed from a passive pastime into an act of quiet rebellion. When we open a book, we don't merely consume words; we step into a sanctuary crafted entirely by human imagination.
+            </p>
+
+            <blockquote class="reader-quote">
+              "A book is a device to ignite the imagination. It requires no battery, no screen refresh rate, only your undivided presence."
+            </blockquote>
+
+            <p>
+              When designing BookShelf, our core principle was sacred minimalism. We stripped away every distracting banner, pop-up, and unnecessary interface chrome. What remains is a pure canvas dedicated to high typography legibility, smooth page flow, and effortless discovery.
+            </p>
+
+            <p>
+              Whether you are reading in bright sunlight or under the warm glow of a bedside lamp, BookShelf automatically adapts to your eyes. Try changing the themes above or selecting text in this chapter to save your favorite highlights.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Selection Highlight Toast -->
+      <div class="highlight-toast" id="highlight-toast">
+        <span class="toast-icon">✨</span>
+        <span class="toast-text">Quote saved to your BookShelf Highlights!</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Section 9: Luxury Brand Footer -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-container">
+      
+      <!-- Footer Grid Links -->
+      <div class="footer-grid">
+        
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col footer-brand-col">
+          <a href="#" class="footer-logo-link" aria-label="BookShelf Home">
+            <img src="Logo/Primary logo.png" alt="BookShelf Logo" class="footer-logo-img">
+          </a>
+          <p class="footer-brand-desc">
+            Carry an entire library anywhere you go. Built for readers who cherish focus, discovery, and timeless stories.
+          </p>
+          <!-- Social Icons with GSAP magnetic effect -->
+          <div class="footer-socials">
+            <a href="#" class="social-icon-btn magnetic-btn" aria-label="Twitter / X">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-icon-btn magnetic-btn" aria-label="Instagram">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="social-icon-btn magnetic-btn" aria-label="Dribbble">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"></path><path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32"></path><path d="M8.56 2.75c4.37 6 6 9.42 8 18.5"></path></svg>
+            </a>
+            <a href="#" class="social-icon-btn magnetic-btn" aria-label="GitHub">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#brand-story">Brand Story</a></li>
+            <li><a href="#brand-identity">Brand Identity</a></li>
+            <li><a href="#color-palette">Color Palette</a></li>
+            <li><a href="#every-reading-moment">Mobile App Showcase</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Product Features -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Features</h4>
+          <ul class="footer-links">
+            <li><a href="#reading-moments">Curated Discoveries</a></li>
+            <li><a href="#reading-moments">Distraction-Free Reader</a></li>
+            <li><a href="#every-reading-moment">Offline Sync</a></li>
+            <li><a href="#reading-moments">Personal Highlights</a></li>
+            <li><a href="#color-palette">Adaptive Themes</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Platform Availability -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Platforms</h4>
+          <ul class="footer-links">
+            <li><a href="#">iOS App Store</a></li>
+            <li><a href="#">Google Play Store</a></li>
+            <li><a href="#">Web Application</a></li>
+            <li><a href="#">macOS Desktop App</a></li>
+            <li><a href="#">Brand Kit (SVG)</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          © 2026 BookShelf Inc. All rights reserved. Designed for readers worldwide.
+        </p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <span class="footer-dot">•</span>
+          <a href="#">Terms of Service</a>
+          <span class="footer-dot">•</span>
+          <a href="#">Cookie Preferences</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- External Libraries: Lenis Smooth Scroll, GSAP -->
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
