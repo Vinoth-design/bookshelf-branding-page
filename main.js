@@ -62,6 +62,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Scroll-Driven Dual-Row Marquee Dynamics
+  const marqueeSection = document.getElementById('marquee-showcase');
+  const row1 = document.getElementById('marquee-row-1');
+  const row2 = document.getElementById('marquee-row-2');
+
+  if (marqueeSection && row1 && row2) {
+    let ticking = false;
+
+    function updateMarqueeScroll() {
+      const rect = marqueeSection.getBoundingClientRect();
+      const sectionTop = rect.top + window.scrollY;
+      const progress = window.scrollY - sectionTop + window.innerHeight;
+      const offset = progress * 0.35;
+
+      // Base shift to center Set 2 of tripled tracks (-1/3 of total track width)
+      const row1SetWidth = row1.scrollWidth > 0 ? (row1.scrollWidth / 3) : 2500;
+      const row2SetWidth = row2.scrollWidth > 0 ? (row2.scrollWidth / 3) : 2500;
+
+      const baseShift1 = -row1SetWidth;
+      const baseShift2 = -row2SetWidth;
+
+      // Row 1 (Top): Moves RIGHT on scroll (baseShift1 + offset)
+      // Row 2 (Bottom): Moves LEFT on scroll (baseShift2 - offset)
+      row1.style.transform = `translate3d(${baseShift1 + offset}px, 0px, 0px)`;
+      row2.style.transform = `translate3d(${baseShift2 - offset}px, 0px, 0px)`;
+
+      ticking = false;
+    }
+
+    function onScrollOrResize() {
+      if (!ticking) {
+        requestAnimationFrame(updateMarqueeScroll);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize, { passive: true });
+    window.addEventListener('load', updateMarqueeScroll);
+
+    // Initial calculation
+    updateMarqueeScroll();
+
+    // Hook into Lenis smooth scroll updates if active
+    if (typeof lenis !== 'undefined' && lenis) {
+      lenis.on('scroll', updateMarqueeScroll);
+    }
+  }
+
   // Dedicated Video Play/Pause Control on Section Entry & Exit
   const brandVideoSection = document.getElementById('brand-video');
   const brandVideo = brandVideoSection ? brandVideoSection.querySelector('video') : null;
